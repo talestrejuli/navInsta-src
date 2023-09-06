@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs').promises;
 
-let LimiteMaxUsuario = 20; //Define a quantidade maxima de usuários que deseja parar de seguir
+let LimiteMaxUsuario = 25; //Define a quantidade maxima de usuários que deseja parar de seguir
 
 async function getFirstUsernameFromFile() {
     try {
@@ -90,7 +90,7 @@ const funcaoPrincipalAssinc = async () => {
             break;
         }
 
-        await page.goto(`https://www.instagram.com/${username}/`, { waitUntil: 'networkidle2' });
+        await page.goto(`https://www.instagram.com${username}`, { waitUntil: 'networkidle2' });
         console.log(`Navegou até a página do usuário ${username}`);
 
         //Esperar abrir a página do usuário
