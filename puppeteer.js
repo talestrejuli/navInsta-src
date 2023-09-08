@@ -35,10 +35,10 @@ async function removeUserFromFile(usernameToRemove) {
 const funcaoPrincipalAssinc = async () => {
 (async () => {
 
-    const page = await browser.newPage();
     const browser = puppeteer.launch({
         executablePath: '/usr/bin/google-chrome-stable', headless: "new" } // { headless: false } permite que você veja o navegador em ação
       );
+    const page = await browser.newPage();
     
     //Acessa a página no instagram
     await page.goto('https://www.instagram.com');
