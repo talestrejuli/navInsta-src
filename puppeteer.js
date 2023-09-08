@@ -44,7 +44,7 @@ const funcaoPrincipalAssinc = async () => {
     const page = await browser.newPage();
     
     //Acessa a página no instagram
-    await page.goto('https://www.instagram.com.br');
+    await page.goto('https://www.instagram.com');
 
     // Aqui, inserimos o código para logar, navegar e realizar as ações necessárias.
     await page.waitForSelector('input[name="username"]');
