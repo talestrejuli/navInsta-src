@@ -39,7 +39,7 @@ const funcaoPrincipalAssinc = async () => {
     const browser = await puppeteer.launch({ 
         executablePath: '/usr/bin/google-chrome-stable', //Comentar esta linha caso esteja rodando local
         headless: "new", //headless FALSE para ver o browser
-        args: ['--no-sandbox'] 
+        args: ['--no-sandbox', '--lang=pt-BR']
     });
     const page = await browser.newPage();
     
