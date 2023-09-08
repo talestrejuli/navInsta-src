@@ -46,10 +46,17 @@ const funcaoPrincipalAssinc = async () => {
     //Acessa a página no instagram
     await page.goto('https://www.instagram.com');
 
+    //screenshot
+    await page.screenshot({ path: 'paginaInsta.png' });
+
     // Aqui, inserimos o código para logar, navegar e realizar as ações necessárias.
     await page.waitForSelector('input[name="username"]');
     await page.type('input[name="username"]', 'tales.jessyca');
     await page.type('input[name="password"]', 't@lesejessyca123..');
+
+    //screenshot
+    await page.screenshot({ path: 'credenciaisPreenchidas.png' });
+
     await page.click('button[type="submit"]');
 
     //Esperar o login ser realizado
@@ -64,6 +71,7 @@ const funcaoPrincipalAssinc = async () => {
             console.log('Clicou no botão "Agora não"');
         } else {
             console.log('Botão "Agora não" não encontrado.');
+            await page.screenshot({ path: 'botaoNaoEncontrado.png' });
         }
     } catch (error) {
         console.error('Erro ao buscar ou clicar no botão:', error.message);
