@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs').promises;
-process.env.PUPPETEER_DOWNLOAD_PATH = './puppeteer_cache'; 
 
+process.env.PUPPETEER_DOWNLOAD_PATH = './puppeteer_cache'; 
 
 let LimiteMaxUsuario = 25; //Define a quantidade maxima de usuários que deseja parar de seguir
 
@@ -36,7 +36,7 @@ async function removeUserFromFile(usernameToRemove) {
 
 const funcaoPrincipalAssinc = async () => {
 (async () => {
-    const browser = await puppeteer.launch({ headless: "new" });  // { headless: false } permite que você veja o navegador em ação
+    const browser = await puppeteer.launch({ executablePath: '/usr/bin/google-chrome', headless: "new" }); //headless False para ver o browser
     const page = await browser.newPage();
     
     //Acessa a página no instagram
