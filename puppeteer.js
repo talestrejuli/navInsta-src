@@ -1,5 +1,5 @@
 const fs = require('fs').promises;
-const puppeteer = require('puppeteer-core');
+const puppeteer = require('puppeteer');
 
 const browser = puppeteer.launch({
   executablePath: '/usr/bin/google-chrome-stable', // Substitua pelo caminho real
