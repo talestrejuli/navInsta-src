@@ -1,10 +1,6 @@
 const fs = require('fs').promises;
 const puppeteer = require('puppeteer');
 
-const browser = puppeteer.launch({
-  executablePath: '/usr/bin/google-chrome-stable', headless: "new" } // { headless: false } permite que você veja o navegador em ação
-);
-
 let LimiteMaxUsuario = 25; //Define a quantidade maxima de usuários que deseja parar de seguir
 
 async function getFirstUsernameFromFile() {
@@ -40,6 +36,9 @@ const funcaoPrincipalAssinc = async () => {
 (async () => {
 
     const page = await browser.newPage();
+    const browser = puppeteer.launch({
+        executablePath: '/usr/bin/google-chrome-stable', headless: "new" } // { headless: false } permite que você veja o navegador em ação
+      );
     
     //Acessa a página no instagram
     await page.goto('https://www.instagram.com');
