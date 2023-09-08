@@ -138,8 +138,12 @@ const funcaoPrincipalAssinc = async () => {
 })();
 }
 
+funcaoPrincipalAssinc();
+
+/*
 module.exports = async function minhaFuncaoPrincipal() {
     await getFirstUsernameFromFile();
     await removeUserFromFile();
     await funcaoPrincipalAssinc();
 };
+*/
