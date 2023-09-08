@@ -2,7 +2,7 @@ const fs = require('fs').promises;
 const puppeteer = require('puppeteer-core');
 
 const browser = puppeteer.launch({
-  executablePath: '/usr/local/google-chrome-stable_116.0.5845.179-1_amd64.deb', // Substitua pelo caminho real
+  executablePath: '/usr/bin/google-chrome-stable', // Substitua pelo caminho real
 });
 
 let LimiteMaxUsuario = 25; //Define a quantidade maxima de usuários que deseja parar de seguir
