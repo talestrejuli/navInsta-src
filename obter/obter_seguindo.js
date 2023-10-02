@@ -1,5 +1,6 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs'); //Módulo para escrita no arquivo
+const fsp = require('fs').promises;
 
 (async () => {
     // Configuração inicial
@@ -9,14 +10,37 @@ const fs = require('fs'); //Módulo para escrita no arquivo
     const senha = 't@lesejessyca123..';
     const maxUserCount = 0;
     const scrollDelay = 2000; // Atraso de rolagem em milissegundos
+
+    // Tentar ler os cookies de um arquivo cookies.json
+    let cookies;
+    try {
+        cookies = JSON.parse(await fsp.readFile('cookies.json', 'utf8'));
+    } catch (err) {
+        console.log('Nenhum arquivo de cookies encontrado. Redirecionando para fazer login...');
+    }
     
-    // Acessa o Instagram e faz o login
-    await page.goto('https://www.instagram.com');
-    await page.waitForSelector('input[name="username"]');
-    await page.type('input[name="username"]', username);
-    await page.type('input[name="password"]', senha);
-    await page.click('button[type="submit"]');
-    await page.waitForTimeout(6000);
+    if (cookies && cookies.length) {
+        // Se os cookies existirem, configure-os na página
+        await page.setCookie(...cookies);
+        console.log('Cookies carregados');
+      } else {
+
+        // Acessa o Instagram e faz o login
+        await page.goto('https://www.instagram.com');
+        await page.waitForSelector('input[name="username"]');
+        await page.type('input[name="username"]', username);
+        await page.type('input[name="password"]', senha);
+        await page.click('button[type="submit"]');
+
+        //Aguardando 1 minuto
+        await page.waitForTimeout(60000);
+
+      }
+
+    //Salvando cookies do login
+    cookies = await page.cookies();
+    await fsp.writeFile('cookies.json', JSON.stringify(cookies));
+
 
     // Clica no botão "Agora não" se aparecer (primeira vez)
     try {
@@ -121,6 +145,6 @@ const fs = require('fs'); //Módulo para escrita no arquivo
     }
 
     console.log("Fim da busca!");
-    await browser.close();
+    //await browser.close();
 
 })();
