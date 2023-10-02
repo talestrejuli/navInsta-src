@@ -3,7 +3,7 @@ const fs = require('fs').promises;
 
 process.env.PUPPETEER_DOWNLOAD_PATH = './puppeteer_cache'; 
 
-let LimiteMaxUsuario = 25; //Define a quantidade maxima de usuários que deseja parar de seguir
+let LimiteMaxUsuario = 35; //Define a quantidade maxima de usuários que deseja parar de seguir
 
 async function getFirstUsernameFromFile() {
     try {
@@ -145,8 +145,12 @@ const funcaoPrincipalAssinc = async () => {
 })();
 }
 
+funcaoPrincipalAssinc();
+
+/*
 module.exports = async function minhaFuncaoPrincipal() {
     await getFirstUsernameFromFile();
     await removeUserFromFile();
     await funcaoPrincipalAssinc();
 };
+*/
