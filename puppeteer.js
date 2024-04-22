@@ -3,7 +3,7 @@ const fs = require('fs').promises;
 
 process.env.PUPPETEER_DOWNLOAD_PATH = './puppeteer_cache'; 
 
-let LimiteMaxUsuario = 35; //Define a quantidade maxima de usuários que deseja parar de seguir
+let LimiteMaxUsuario = 40; //Define a quantidade maxima de usuários que deseja parar de seguir
 
 async function getFirstUsernameFromFile() {
     try {
@@ -37,9 +37,9 @@ async function removeUserFromFile(usernameToRemove) {
 const funcaoPrincipalAssinc = async () => {
 (async () => {
     const browser = await puppeteer.launch({ 
-        executablePath: '/usr/bin/google-chrome-stable', //Comentar esta linha caso esteja rodando local
-        headless: "new", //headless FALSE para ver o browser
-        args: ['--no-sandbox', '--lang=pt-BR']
+        //executablePath: '/usr/bin/google-chrome-stable', //Comentar esta linha caso esteja rodando local
+        headless: false, //headless FALSE para ver o browser
+        //args: ['--no-sandbox', '--lang=pt-BR']
     });
     const page = await browser.newPage();
     
@@ -49,12 +49,12 @@ const funcaoPrincipalAssinc = async () => {
     // Aqui, inserimos o código para logar, navegar e realizar as ações necessárias.
     await page.waitForSelector('input[name="username"]');
     await page.type('input[name="username"]', 'tales.jessyca');
-    await page.type('input[name="password"]', 't@lesejessyca123..');
+    await page.type('input[name="password"]', 'jessyc@.t@les123...');
 
     await page.click('button[type="submit"]');
 
     //Esperar o login ser realizado
-    await page.waitForTimeout(6000);
+    await page.waitForTimeout(60000);
 
     //Clica no primeiro botão "Agora não"
     try {
@@ -62,7 +62,7 @@ const funcaoPrincipalAssinc = async () => {
         
         if (button.length > 0) {
             await button[0].click();
-            console.log('Clicou no botão "Agora não"');
+            console.log('Clicou no botão "Agora não"');c
         } else {
             console.log('Botão "Agora não" não encontrado.');
         }
@@ -147,10 +147,9 @@ const funcaoPrincipalAssinc = async () => {
 
 funcaoPrincipalAssinc();
 
-/*
+
 module.exports = async function minhaFuncaoPrincipal() {
     await getFirstUsernameFromFile();
     await removeUserFromFile();
     await funcaoPrincipalAssinc();
 };
-*/

@@ -3,10 +3,10 @@ const fs = require('fs'); //Módulo para escrita no arquivo
 
 (async () => {
     // Configuração inicial
-    const browser = await puppeteer.launch({ headless: "new" });
+    const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
     const username = 'tales.jessyca';
-    const senha = 't@lesejessyca123..';
+    const senha = 'jessyc@.t@les123...';
     const maxUserCount = 0;
     const scrollDelay = 2000; // Atraso de rolagem em milissegundos
     

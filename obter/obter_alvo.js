@@ -71,7 +71,7 @@ async function main() {
     console.log("Preenchendo os campos de login...");
     await page.waitForSelector('input[name="username"]');
     await page.type('input[name="username"]', 'tales.jessyca');
-    await page.type('input[name="password"]', 't@lesejessyca123..');
+    await page.type('input[name="password"]', 'jessyc@.t@les123...');
     console.log("Clicando no botão de login...");
     await page.click('button[type="submit"]');
     await page.waitForTimeout(6000);
